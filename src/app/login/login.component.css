@@ -1,0 +1,23 @@
+.parent {
+    background-color: slategray;
+    height: 100%;
+}
+
+.mycontainer .title {
+    border-radius: 7px;
+}
+
+.mycontainer {
+    color: aliceblue;
+    background-color: darkgray;
+    border-radius: 7px;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.buttons {
+    flex: auto;
+    flex-direction: inherit;
+    flex-shrink: inherit;
+}
