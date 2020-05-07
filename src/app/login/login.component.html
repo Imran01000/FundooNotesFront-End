@@ -1,0 +1,22 @@
+<div class="parent">
+    <div fxLayout=column class="mycontainer" fxFlex="40" fxFlexOffset="30" fxLayoutAlign="center">
+        <mat-toolbar color=primary class=" title">
+            <span>Login</span>
+            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
+        </mat-toolbar>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Enter email" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Enter password" />
+        </mat-form-field>
+        <div class="buttons" fxLayout="row" fxLayoutAlign="space-between end">
+            <button mat-raised-button color=primary>login</button>
+            <button mat-raised-button color=primary routerLink="/forget-password">forget-password</button>
+            <button mat-raised-button color=primary routerLink="/registration">sign-up</button>
+        </div>
+    </div>
+</div>
