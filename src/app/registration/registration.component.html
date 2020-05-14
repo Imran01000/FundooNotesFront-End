@@ -1,47 +1,57 @@
 <div class="parent">
-    <form [formGroup]="formGroup">
+    <form [formGroup]="form" (ngSubmit)="registerNow()">
         <div fxLayout=column class="mycontainer" fxFlex="40" fxFlexOffset="30" fxLayoutAlign="">
             <mat-toolbar color=primary class="title">
                 <span>Registration</span>
-                <mat-icon>home</mat-icon>
+                <span style="color:pink;font-size: 0.9vw;padding-left: 0.2cm;">Fundoo</span>
+                <span style="color:yellowgreen ; font-size: 0.9vw">Note</span>
+                <mat-icon style="padding-left: 7.3cm;">home</mat-icon>
             </mat-toolbar>
             <mat-form-field>
                 <mat-label>First name</mat-label>
-                <input type="text" matInput placeholder="Enter first name" formControlName="firstname" />
+                <input type="text" matInput placeholder="Enter first name" formControlName="firstName" [(ngModel)]="registration.fname" />
+                <mat-error *ngIf="form.get('firstName').errors.required">{{alertMessageName}}</mat-error>
                 <mat-icon fxFlex="5">mood</mat-icon>
-                <mat-error>{{ alertMessageName }}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Last name</mat-label>
-                <input type="text" matInput placeholder="Enter last name" formControlName="lastname" />
+                <input type="text" matInput placeholder="Enter last name" formControlName="lastName" [(ngModel)]="registration.lname" />
+                <mat-error *ngIf="form.get('lastName').errors.required">{{alertMessageName}}</mat-error>
+                <mat-error *ngIf="form.get('firstName').errors.pattern">First letter should be in uppercase!!</mat-error>
                 <mat-icon fxFlex="5">mood</mat-icon>
-                <mat-error>{{ alertMessageName }}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="Enter email" formControlName="email" />
-                <mat-icon fxFlex="5"> email</mat-icon>
-                <mat-error>{{ alertMessageEmail }}</mat-error>
+                <input type="email" matInput placeholder="Enter email" formControlName="email" [(ngModel)]="registration.email" />
+                <mat-error *ngIf="form.get('email').errors.required">{{alertMessageEmail}}</mat-error>
+                <mat-error *ngIf="form.get('email').errors.email">Please provide valid email!!</mat-error>
+                <mat-icon fxFlex="5">email</mat-icon>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input type="password" matInput placeholder="Enter password" formControlName="password" />
-                <mat-icon fxFlex="5">visibility_off</mat-icon>
-                <mat-error>{{ alertMessagePassword }}</mat-error>
+                <input type="password" matInput placeholder="Enter password" formControlName="password" [type]="hide ? 'password':'text'" />
+                <mat-error *ngIf="form.get('password').errors.required">{{alertMessagePassword}}</mat-error>
+                <mat-error *ngIf="form.get('password').errors.password">Minimum 6 character required!!</mat-error>
+                <button mat-icon-button fxFlex="5">
+                    <mat-icon fxFlex="5" matSuffix (click)="hide = !hide">visibility_off</mat-icon>
+                </button>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Confimr password</mat-label>
-                <input type="password" matInput placeholder="Confirm password" formControlName="confirmpassword" />
-                <mat-icon fxFlex="5">visibility_off</mat-icon>
-                <mat-error>{{ alertMessageConfirm }}</mat-error>
+                <input type="password" matInput placeholder="Confirm password" formControlName="confirmPassword" [(ngModel)]="registration.password" [type]="hide ? 'password':'text'" />
+                <mat-error>{{alertMessagePassword}}</mat-error>
+                <button mat-icon-button fxFlex="5">
+                    <mat-icon fxFlex="5" matSuffix (click)="hide = !hide">visibility_off</mat-icon>
+                </button>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Contact no</mat-label>
-                <input type="tel" matInput placeholder="Enter contact no" formControlName="contactno" />
+                <input type="tel" matInput placeholder="Enter contact no" formControlName="contactNo" [(ngModel)]="registration.mobileNo" />
+                <mat-error *ngIf="form.get('contactNo').errors.required">{{alertMessageContactNo}}</mat-error>
+                <mat-error *ngIf="form.get('contactNo').errors.password">Shoud be 10 digit!!</mat-error>
                 <mat-icon fxFlex="5"> call</mat-icon>
-                <mat-error>{{ alertMessageContactNo }}</mat-error>
             </mat-form-field>
-            <button mat-raised-button color=primary>confirm</button>
+            <button mat-raised-button color=primary type="submit" (click)="openSnackBar('Registration done')">confirm</button>
         </div>
     </form>
 </div>
