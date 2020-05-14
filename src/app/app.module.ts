@@ -12,13 +12,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
+//import { ForgetPasswordService } from './forget-password.service';
+import { RegistrationService } from './registration.service';
+import { LoginService } from './login.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+  
   ],
   imports: [
     BrowserModule,
@@ -33,9 +40,18 @@ import { HttpClientModule } from '@angular/common/http';
     MatAutocompleteModule,
     MatIconModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatSidenavModule,
+   // ForgetPasswordService,
+   MatSnackBarModule,
+   MatCardModule
   ],
-  providers: [],
+  providers: [
+   // ForgetPasswordService,
+    RegistrationService,
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
