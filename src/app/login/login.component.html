@@ -1,22 +1,31 @@
 <div class="parent">
-    <div fxLayout=column class="mycontainer" fxFlex="40" fxFlexOffset="30" fxLayoutAlign="center">
-        <mat-toolbar color=primary class=" title">
-            <span>Login</span>
-            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
-        </mat-toolbar>
-
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="Enter email" />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Enter password" />
-        </mat-form-field>
-        <div class="buttons" fxLayout="row" fxLayoutAlign="space-between end">
-            <button mat-raised-button color=primary>login</button>
-            <button mat-raised-button color=primary routerLink="/forget-password">forget-password</button>
-            <button mat-raised-button color=primary routerLink="/registration">sign-up</button>
+    <form [formGroup]="form">
+        <div fxLayout=column class="mycontainer" fxFlex="40" fxFlexOffset="30" fxLayoutAlign="center">
+            <mat-toolbar color=primary class=" title">
+                <span> Login</span>
+                <span style="color:pink;font-size: 0.9vw;padding-left: 0.2cm;">Fundoo</span>
+                <span style="color:yellowgreen ; font-size: 0.9vw">Note</span>
+                <mat-icon style="padding-left: 8.8cm;">https</mat-icon>
+            </mat-toolbar>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Enter email" formControlName="email" />
+                <mat-icon fxFlex="5">perm_identity</mat-icon>
+                <mat-error>{{alertMessageName}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Enter password" formControlName="password" [type]="hide ? 'password':'text'" />
+                <button mat-icon-button fxFlex="5">
+                    <mat-icon fxFlex="5" matSuffix (click)="hide = !hide">visibility_off</mat-icon>
+                </button>
+                <mat-error>{{alertMessagePassword}}</mat-error>
+            </mat-form-field>
+            <div class="buttons" fxLayout="row" fxLayoutAlign="space-between end">
+                <button mat-raised-button color=primary (click)="openSnackBar('login successful')">login</button>
+                <button mat-raised-button color=accent routerLink="/registration">sign-up</button>
+            </div>
+            <a href="/forget-password">forget pasword?</a>
         </div>
-    </div>
+    </form>
 </div>
