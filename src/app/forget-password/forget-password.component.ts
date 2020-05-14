@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , FormGroup , Validators } from '@angular/forms';
+import { Forget } from './forget';
+
 
 
 @Component({
@@ -10,8 +12,9 @@ import { FormBuilder , FormGroup , Validators } from '@angular/forms';
 export class ForgetPasswordComponent implements OnInit {
   formGroup: FormGroup;
   alertMessageEmail: string = 'Please provide your email!!';
-
+  forget: Forget= new Forget("");
   constructor(private formBuilder:FormBuilder) { }
+  
 
   ngOnInit(): void {
     this.createForm();
