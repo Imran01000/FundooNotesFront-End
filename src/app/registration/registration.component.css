@@ -10,7 +10,6 @@
 
 .parent .mycontainer mat-toolbar {
     display: flex;
-    justify-content: space-between;
     flex-wrap: nowrap;
 }
 
@@ -26,7 +25,6 @@ form {
     color: aliceblue;
     background-color: darkgray;
     border-radius: 7px;
-    align-content: center;
-    align-items: center;
     align-self: center;
+    box-shadow: 3px 4px 5px rgb(3, 32, 87);
 }
