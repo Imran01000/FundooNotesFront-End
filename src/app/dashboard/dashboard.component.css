@@ -1,0 +1,35 @@
+.parent {
+    height: 100%;
+}
+
+.searchbar input {
+    padding-left: 2cm;
+    width: 20cm;
+    height: 1cm;
+    border-radius: 10px;
+    display: flex;
+    margin-left: 5cm;
+}
+
+.parent .mycontainer mat-card {
+    padding-left: 2cm;
+    width: 20cm;
+    height: 1cm;
+    border-radius: 10px;
+    display: flex;
+    margin-left: 5cm;
+}
+
+.parent .mycontainer mat-card {
+    padding-top: 5cm;
+    border: 1px solid;
+    padding: 10px;
+}
+
+.parent .mycontainer mat-toolbar {
+    padding-left: 1cm;
+}
+
+.parent .mycontainer mat-icon {
+    padding-left: 1cm;
+}
