@@ -1,0 +1,63 @@
+<div class="parent">
+    <form [formGroup]="form" (ngSubmit)="registerNow()">
+        <div fxLayout=column class="mycontainer" fxFlex="40" fxFlexOffset="30">
+            <mat-toolbar color=primary class="title">
+                <span>Registration</span>
+                <span style="color:pink;font-size: 0.9vw;padding-left: 0.2cm;">Fundoo</span>
+                <span style="color:yellowgreen ; font-size: 0.9vw">Note</span>
+                <mat-icon style="padding-left: 7.3cm;">home</mat-icon>
+            </mat-toolbar>
+            <mat-form-field>
+                <mat-label>First name</mat-label>
+                <input type="text" matInput placeholder="Enter first name" formControlName="firstName" [(ngModel)]="registration.fname" />
+                <mat-error *ngIf="form.get('firstName').hasError('required')">{{alertMessageName}}</mat-error>
+                <mat-error *ngIf="form.get('firstName').hasError('pattern')">First character should be in uppercase</mat-error>
+                <mat-icon fxFlex="5">mood</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Last name</mat-label>
+                <input type="text" matInput placeholder="Enter last name" formControlName="lastName" [(ngModel)]="registration.lname" />
+                <mat-error *ngIf="form.get('lastName').hasError('required')">{{alertMessageName}}</mat-error>
+                <mat-error *ngIf="form.get('lastName').hasError('pattern')">First character should be in uppercase</mat-error>
+                <mat-icon fxFlex="5">mood</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Enter email" formControlName="email" [(ngModel)]="registration.email" />
+                <mat-error *ngIf="form.get('email').hasError('required')">{{alertMessageEmail}}</mat-error>
+                <mat-error *ngIf="form.get('email').hasError('email')">Provide valid email!!</mat-error>
+                <mat-icon fxFlex="5">email</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Enter password" formControlName="password" [type]="hide ? 'password':'text'" />
+                <mat-error *ngIf="form.get('password').hasError('required')">{{alertMessagePassword}}</mat-error>
+                <mat-error *ngIf="form.get('password').hasError('minLength')">Minimum 6 character required!!</mat-error>
+                <button mat-icon-button fxFlex="5">
+                    <mat-icon fxFlex="5" matSuffix (click)="hide = !hide">visibility_off</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Confirm password</mat-label>
+                <input type="password" matInput placeholder="Confirm password" formControlName="confirmPassword" [(ngModel)]="registration.password" [type]="hide ? 'password':'text'" />
+                <mat-error>{{alertMessagePassword}}</mat-error>
+                <button mat-icon-button fxFlex="5">
+                    <mat-icon fxFlex="5" matSuffix (click)="hide = !hide">visibility_off</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Contact no</mat-label>
+                <input type="tel" matInput placeholder="Enter contact no" formControlName="contactNo" [(ngModel)]="registration.mobileNo" />
+                <mat-error *ngIf="form.get('contactNo').hasError('required')">{{alertMessageContactNo}}</mat-error>
+                <mat-error *ngIf="form.get('contactNo').hasError('pattern')">Must be 10 digit and start with(987)!!</mat-error>
+
+                <mat-icon fxFlex="5"> call</mat-icon>
+            </mat-form-field>
+            <!--<button mat-raised-button color=primary type="submit" (click)="openSnackBar('Registration done')" routerLink="/login">confirm</button>-->
+            <div class="buttons" fxLayout="row" fxLayoutAlign="space-between end">
+                <button mat-raised-button color=primary type="submit" (click)="registerNow()" routerLink="/login">Register</button>
+                <button mat-raised-button color=accent routerLink="/login">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
