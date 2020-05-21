@@ -1,0 +1,32 @@
+<div class="parent">
+    <form [formGroup]="form">
+        <div fxLayout=column class="mycontainer" fxFlex="40" fxFlexOffset="30" fxLayoutAlign="center">
+            <mat-toolbar color=primary class=" title">
+                <span> Login</span>
+                <span style="color:pink;font-size: 0.9vw;padding-left: 0.2cm;">Fundoo</span>
+                <span style="color:yellowgreen ; font-size: 0.9vw">Note</span>
+                <mat-icon style="padding-left: 8.8cm;">https</mat-icon>
+            </mat-toolbar>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Enter email" formControlName="email" />
+                <mat-icon fxFlex="5">perm_identity</mat-icon>
+                <mat-error *ngIf="form.get('email').hasError('required')">{{alertMessageName}}</mat-error>
+                <mat-error *ngIf="form.get('email').hasError('email')">Provide valid email!!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Enter password" formControlName="password" [type]="hide ? 'password':'text'" />
+                <button mat-icon-button fxFlex="5">
+                    <mat-icon fxFlex="5" matSuffix (click)="hide = !hide">visibility_off</mat-icon>
+                </button>
+                <mat-error>{{alertMessagePassword}}</mat-error>
+            </mat-form-field>
+            <div class="buttons" fxLayout="row" fxLayoutAlign="space-between end">
+                <button mat-raised-button color=primary (click)="openSnackBar('Login done','Successful')">Login</button>
+                <button mat-raised-button color=accent routerLink="/registration">Sign-Up</button>
+            </div>
+            <a href="/forgetPassword">Forget Pasword?</a>
+        </div>
+    </form>
+</div>
