@@ -1,0 +1,27 @@
+<div class="expansionBar">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header [expandedHeight]="'4cm'">
+                <input type="text" placeholder="Add a note..." />
+                <div class="uppericons">
+                    <button mat-icon-button>
+                        <mat-icon matTooltip="New list">check_box</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                        <mat-icon matTooltip="New note with drawing">colorize</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                        <mat-icon matTooltip="New note with image">photo</mat-icon>
+                    </button>
+                </div>
+            </mat-expansion-panel-header>
+            <input type="text" style="width: 10cm; height: 1.5cm;" />
+            <div>
+                <router-outlet></router-outlet>
+                <div class="icons" fxLayout="row">
+                    <app-icons></app-icons>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
