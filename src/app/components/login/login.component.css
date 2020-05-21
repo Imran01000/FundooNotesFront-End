@@ -1,0 +1,47 @@
+.parent {
+    background-color: whitesmoke;
+    height: 100%;
+}
+
+.parent .mycontainer mat-form-field {
+    padding-top: 0.3cm;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.parent form {
+    height: 100%;
+}
+
+.mycontainer .title {
+    border-radius: 7px;
+}
+
+.mycontainer {
+    color: aliceblue;
+    background-color: darkgray;
+    border-radius: 7px;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    height: 45%;
+    box-shadow: 3px 4px 5px rgb(3, 32, 87);
+}
+
+.buttons {
+    flex: auto;
+    flex-direction: inherit;
+    flex-shrink: inherit;
+    padding-left: 3cm;
+    padding-right: 3cm;
+    display: flex;
+}
+
+.parent a {
+    font: caption;
+    color: whitesmoke;
+    padding-left: 5.5cm;
+    padding-bottom: 0.4cm;
+    flex: auto;
+    display: flex;
+}
