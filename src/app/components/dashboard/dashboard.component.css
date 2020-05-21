@@ -1,0 +1,55 @@
+.mycontainer {
+    height: 90%;
+}
+
+img {
+    height: 1cm;
+    width: 1cm;
+    padding: 0.2cm;
+}
+
+.searchbar input {
+    padding-left: 2cm;
+    width: 17cm;
+    height: 1cm;
+    border-radius: 10px;
+    margin-left: 2cm;
+}
+
+mat-toobar {
+    height: fit-content;
+}
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-sidenav,
+mat-sidenav-content {
+    padding: 16px;
+}
+
+mat-sidenav {
+    width: 8.2cm;
+    height: 100%;
+}
+
+.icons {
+    padding: 1cm;
+}
+
+.text {
+    margin-left: 17cm;
+    margin-top: 7cm;
+    font: icon
+}
+
+mat-raised-button :hover {
+    background-color: burlywood;
+}
+
+.SideBarText {
+    margin-top: 4cm;
+    margin-left: 1cm;
+    font: bolder;
+}
