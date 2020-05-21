@@ -1,0 +1,77 @@
+<div class="mycontainer">
+    <mat-toolbar>
+        <button mat-icon-button (click)="opened = !opened">
+            <mat-icon matTooltip="Main menu">menu</mat-icon>
+        </button>
+        <img src="..//assets//sample4.jpg">
+        <span>Fundoo</span>
+        <span style="color: gold;">Note</span>
+        <div class="searchbar">
+            <input type="text" placeholder="Search" fxLayoutAlign="center center">
+        </div>
+        <div class="icons">
+            <button mat-icon-button>
+                <mat-icon matTooltip="Refresh">refresh</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon matTooltip="List View">view_stream</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon matTooltip="Settings">settings</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Fundoo Apps">
+                <mat-icon>apps</mat-icon>
+            </button>
+            <button mat-icon-button routerLink="/" matTooltip="Fundoo Account">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+    <mat-sidenav-container>
+        <mat-sidenav type="slide" [(opened)]="opened">
+            <div class="slidebar">
+                <ul>
+                    <li>
+                        <button mat-raised-button fxFlex=column fxLayout=column>
+                       <mat-icon>notes</mat-icon>Notes
+                    </button>
+                    </li><br/>
+                    <li>
+                        <button mat-raised-button fxFlex=column fxLayout=column>
+                            <mat-icon>notifications</mat-icon>Reminders
+                    </button>
+                    </li><br/>
+                    <li>
+                        <button mat-raised-button fxFlex=column fxLayout=column>
+                            <mat-icon> local_offer</mat-icon>labels
+                    </button>
+                    </li><br/>
+                    <li>
+                        <button mat-raised-button fxFlex=column fxLayout=column>
+                            <mat-icon>edit</mat-icon>edit labels
+                    </button>
+                    </li><br/>
+                    <li>
+                        <button mat-raised-button fxFlex=column fxLayout=column>
+                            <mat-icon>archive</mat-icon>archive
+                    </button>
+                    </li><br/>
+                    <li>
+                        <button mat-raised-button fxFlex=column fxLayout=column>
+                            <mat-icon>delete</mat-icon>trash
+                    </button>
+                    </li><br/>
+                </ul>
+            </div>
+            <div class="SideBarText">
+                <span>Privacy . Term</span><br/>
+                <span>Open source licenses</span>
+            </div>
+        </mat-sidenav>
+        <router-outlet></router-outlet>
+        <app-note></app-note>
+        <div class="text">
+            <span>Notes add you appear here</span>
+        </div>
+    </mat-sidenav-container>
+</div>
