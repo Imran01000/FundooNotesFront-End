@@ -1,32 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Registration } from '../components/registration/registration';
+import { Registration } from '../dto/registrationDto';
+import { Login } from '../dto/loginDto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  private httpUrl: 'http://localhost:8082/user';
+  private httpUrl: "http://localhost:8082/user";
   
   constructor( private http: HttpClient ) { }
 
-  public doRegistration(registration: Registration): Observable<Object>
+ doRegistration(registration : Registration): Observable<any>
   {
-    return this.http.post(this.httpUrl+'/registration', registration , {responseType:'text' as 'json'});
+    return this.http.post("http://localhost:8082/user/registration", registration);
+  }
+
+ doLogin(login : Login): Observable<any>
+  {
+    return this.http.post("http://localhost:8082/user/login", login);
   }  
 
-  public doLogin(login)
-  {
-    return this.http.post(this.httpUrl+'/login', login , {responseType:'text' as 'json'});
-  }  
-
-  public forgetPassword(forget)
+ forgetPassword(forget)
   {
     return this.http.post(this.httpUrl+'/forgetPassword', forget , {responseType:'text' as 'json'});
   }
-  public resetPassword(forget)
+ resetPassword(forget)
   {
     return this.http.post(this.httpUrl+'/resetPassword', forget , {responseType:'text' as 'json'});
   }
