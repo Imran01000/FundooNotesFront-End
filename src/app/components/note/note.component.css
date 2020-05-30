@@ -1,18 +1,63 @@
 .expansionBar {
-    padding-top: 3cm;
-    padding-left: 12cm;
-    padding-right: 9cm;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    margin-top: 5%;
 }
 
 .expansionBar input {
-    height: 1cm;
-    max-width: 7cm;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-radius: 0.4rem;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 90%;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    float: left;
+}
+
+.note-container {
+    display: flex;
+    justify-content: center;
+    width: 45%;
+    border-radius: 1em;
+    height: 12%;
+    box-shadow: 2px 3px 4px bisque;
+}
+
+.note-containerpart {
+    display: flex;
+    width: 45%;
+    border-radius: 1em;
+    height: 15em;
+    box-shadow: 2px 3px 4px bisque;
 }
 
 .uppericons {
-    margin-left: 4cm;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 40%;
+    border-radius: 1em;
+    height: 4%;
+}
+
+textarea {
+    border: none;
+    height: 1em;
+    margin: 0.5rem;
+    padding: 16px;
+    font-weight: bolder;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    width: auto;
+}
+
+.icons {
+    padding-top: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
