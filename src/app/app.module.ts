@@ -13,18 +13,23 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
-//import { ForgetPasswordService } from './forget-password.service';
-import { RegistrationService } from './registration.service';
-import { LoginService } from './login.service';
+import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule} from '@angular/material/card';
+import { NoteComponent } from '../app/components/note/note.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { IconsComponent } from '../app/components/icons/icons.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { NoteService } from './services/note.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+    NoteComponent,
+    IconsComponent,
   
   ],
   imports: [
@@ -43,14 +48,14 @@ import { MatCardModule} from '@angular/material/card';
     HttpClientModule,
     FormsModule,
     MatSidenavModule,
-   // ForgetPasswordService,
-   MatSnackBarModule,
-   MatCardModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [
-   // ForgetPasswordService,
-    RegistrationService,
-    LoginService
+    UserServiceService,
+    NoteService
   ],
   bootstrap: [AppComponent]
 })
