@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /*  font-family: 'Google Sans', Roboto, Arial, sans-serif;*/
+    font-family: "Lucida Console", Courier, monospace;
+    margin: 0.75rem;
+    align-items: flex-end;
+    width: auto;
+}
+
+.mat-display {
+    display: flex;
+    width: 23rem;
+    height: auto;
+}
+
+mat-card {
+    border-radius: 15px;
+    border: 1px solid transparent;
+    margin-bottom: 0.75rem;
+    margin-right: 0;
+    flex-direction: row-reverse;
+    box-shadow: 2px 3px 4px bisque;
+}
+
+.note-icon {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pin {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 17em;
+    visibility: visible;
+}
+
+.pin-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.colorsList {
+    width: 50px;
+}
