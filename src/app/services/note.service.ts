@@ -20,4 +20,12 @@ export class NoteService {
      return this.http.post("http://localhost:8082/user/addnote" , addNote , {headers : new HttpHeaders({ 'token' : localStorage.getItem("token")})});
   }
 
+  getNotes(): Observable<any>
+  {
+    console.log(this.headers);
+     return this.http.get("http://localhost:8082/user/showall" ,{
+      headers: new HttpHeaders().set("token", localStorage.getItem("token")),
+      observe: 'response'
+    });
+  }
 }
