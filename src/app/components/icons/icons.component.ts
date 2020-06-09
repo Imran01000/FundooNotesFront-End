@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NoteService } from 'src/app/services/note.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-icons',
@@ -7,9 +9,101 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IconsComponent implements OnInit {
 
-  constructor() { }
+  @Input() note:any;
+  data:any;
+
+  constructor(private service:NoteService , private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
+  colorsArray = [
+    [
+      {
+        colorDetail: "rgba(0, 0, 228,0.5)", name: "Navy"
+      },
+      {
+        colorDetail: "rgba(0, 128, 0,0.5)", name: "Green"
+      },
+      {
+        colorDetail: "rgba(128, 0, 128,0.5)", name: "purple"
+      },
+      {
+        colorDetail: "rgba(255, 99, 71, 0.5)", name: "tomato"
+      }
+    ],
+    [
+      {
+        colorDetail: "rgb(255, 0, 0)", name: "Orange"
+      },
+      {
+        colorDetail: "blue", name: "blue"
+      },
+      {
+        colorDetail: "rgba(255, 0, 0,0.5)", name: "Red"
+      },
+      {
+        colorDetail: "rgb(238, 130, 238)", name: "light pink"
+      }
+
+    ], [
+
+      {
+        colorDetail: "rgba(128, 0, 0,0.4)", name: "Maroon"
+      },
+      {
+        colorDetail: "rgba(192, 192, 192,0.5)", name: "Silver"
+      },
+      {
+        colorDetail: "rgba(255, 255, 255,1)", name: "white"
+      },
+       {
+        colorDetail: "rgb(255, 165, 0)", name: "Dark yellow"
+      }
+    ]
+  ]
+
+  doArchive()
+  {
+    console.log("note data" ,this.note.id);
+    this.data = {
+      archive:true
+    }
+    this.service.setArchive('archive/'+this.note.id,null).subscribe(
+      (response:any)=>{
+        console.log("response id ", response.id);
+        this.snackBar.open('Archive set' ,'OK',{duration:3000} );
+
+      },
+      (error:any)=>{
+        this.snackBar.open('Archive not set' ,'Try again',{duration:3000} );
+      }
+    )
+  }
+
+  doDeleteNote() {
+    console.log("note:", this.note);
+    console.log("note data:", this.note.id);
+    this.data = {
+      id: this.note.id,
+    }
+    this.service.deleteNote(this.note.id).subscribe(
+      (response: any) => {
+        console.log("response : ", response.id);
+        //this.service.getNotes;
+        this.snackBar.open("Trashed", "Ok", { duration: 4000 })
+      }
+    );
+  }
+
+  doColor(color)
+  {
+    console.log(color.colorCode);
+    this.service.addColor('color/' + this.note.id + "?color=" + color.colorDetail, null).subscribe(
+      response => {
+        console.log("response : ", response);
+        this.snackBar.open("Colour Changed", "ok", { duration: 4000 });
+      }
+    );
+  }
 }
