@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NoteService } from 'src/app/services/note.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-icons',
@@ -12,9 +13,15 @@ export class IconsComponent implements OnInit {
   @Input() note:any;
   data:any;
 
-  constructor(private service:NoteService , private snackBar:MatSnackBar) { }
+  constructor(private service:NoteService , private snackBar:MatSnackBar, private router:Router) { }
 
+  
   ngOnInit(): void {
+    this.service.autoRefresh$.subscribe(
+      ()=>{
+        this.doArchive();
+      }
+    );
   }
 
   colorsArray = [
@@ -37,7 +44,7 @@ export class IconsComponent implements OnInit {
         colorDetail: "rgb(255, 0, 0)", name: "Orange"
       },
       {
-        colorDetail: "blue", name: "blue"
+        colorDetail: "rgb(152, 225, 255)", name: "Sky blue"
       },
       {
         colorDetail: "rgba(255, 0, 0,0.5)", name: "Red"
@@ -91,7 +98,10 @@ export class IconsComponent implements OnInit {
       (response: any) => {
         console.log("response : ", response.id);
         //this.service.getNotes;
-        this.snackBar.open("Trashed", "Ok", { duration: 4000 })
+        this.snackBar.open("Trashed", "Ok", { duration: 4000 });
+      },
+      error =>{
+        this.snackBar.open("something went wrong", "Try again",{ duration: 4000 });
       }
     );
   }
@@ -102,7 +112,20 @@ export class IconsComponent implements OnInit {
     this.service.addColor('color/' + this.note.id + "?color=" + color.colorDetail, null).subscribe(
       response => {
         console.log("response : ", response);
-        this.snackBar.open("Colour Changed", "ok", { duration: 4000 });
+       // this.router.navigateByUrl('http://localhost:4200/dashboard');
+        this.snackBar.open("Colour Changed", "Ok", { duration: 4000 });
+      },
+      error => {
+        this.snackBar.open("something went wrong", "Try again");
+      }
+    );
+  }
+
+  getArchiveNotes()
+  {
+    this.service.getArchiveNotes().subscribe(
+      (response: any) => {
+        this.snackBar.open("Trashed", "Ok", { duration: 4000 });
       }
     );
   }
