@@ -1,16 +1,24 @@
-<button mat-icon-button matTooltip="Remind me">
+<button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="options" (click)="addReminderNow()">
     <mat-icon>add_alert</mat-icon>
 </button>
+<mat-menu #options="matMenu">
+    <span style="padding-bottom: cm; font-weight: 500; padding:0.4cm;">Pick date & time</span><br/>
+    <input matInput [matDatepicker]="myDatePicker">
+    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker></mat-datepicker>
+</mat-menu>
 <button mat-icon-button matTooltip="Collabarotor">
     <mat-icon>person_add</mat-icon>
 </button>
 <button mat-icon-button matTooltip="Change color" [matMenuTriggerFor]="menu">
     <mat-icon>color_lens</mat-icon>
 </button>
-<mat-menu #menu="matMenu">
+<mat-menu #menu="matMenu" class="color-menu">
     <div *ngFor="let colors of colorsArray" fxLayout="row">
         <div *ngFor="let color of colors" class="colorsList">
-            <button [ngStyle]="{ 'background-color': color.colorDetail }" matTooltip="{{ color.name }}" mat-mini-fab (click)="doColor(color)"></button>
+            <button [ngStyle]="{ 'background-color': color.colorDetail }" matTooltip="{{ color.name }}" (click)="doColor(color)">
+                <mat-icon></mat-icon>
+            </button>
         </div>
     </div>
 </mat-menu>
@@ -24,6 +32,7 @@
     <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #list="matMenu">
-    <button mat-button style="width: 3cm;" (click)="doDeleteNote()">Delete note</button><br/>
-    <button mat-button style="width: 3cm;">Add label</button>
+    <button mat-menu-item (click)="doTrash()">Remove note</button>
+    <button mat-menu-item>Add label</button>
+    <button mat-menu-item (click)="doDeleteNote()">Delete note</button>
 </mat-menu>
