@@ -1,6 +1,6 @@
 <div class="mycontainer">
     <mat-toolbar>
-        <button mat-icon-button (click)="opened = !opened">
+        <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon matTooltip="Main menu">menu</mat-icon>
         </button>
         <img src="..//assets//sample4.jpg">
@@ -13,65 +13,67 @@
             <button mat-icon-button>
                 <mat-icon matTooltip="Refresh">refresh</mat-icon>
             </button>
-            <button mat-icon-button>
+            <button mat-icon-button *ngIf="!view" matTooltip="List View" (click)="getView()">
                 <mat-icon matTooltip="List View">view_stream</mat-icon>
+            </button>
+            <button mat-icon-button *ngIf="view" matTooltip="Grid View" (click)="getView()">
+                <mat-icon>view_module</mat-icon>
             </button>
             <button mat-icon-button>
                 <mat-icon matTooltip="Settings">settings</mat-icon>
             </button>
-            <button mat-icon-button matTooltip="Fundoo Apps">
-                <mat-icon>apps</mat-icon>
-            </button>
-            <button mat-icon-button routerLink="/" matTooltip="Fundoo Account">
+            <button mat-icon-button routerLink="/" matTooltip="Fundoo Account" class="account-button">
                 <mat-icon>account_circle</mat-icon>
             </button>
         </div>
     </mat-toolbar>
-    <mat-sidenav-container>
-        <mat-sidenav type="slide" [(opened)]="opened">
-            <div class="slidebar">
-                <ul>
-                    <li>
-                        <button mat-raised-button fxFlex=column fxLayout=column>
-                       <mat-icon>notes</mat-icon>Notes
+    <div class="sidenav-div">
+        <mat-sidenav-container class="sidenav-container">
+            <mat-sidenav class="matSidenav" mode="slide" #sidenav>
+                <div class="navbuttons">
+                    <button mat-button class="navbutton" [routerLink]="['/dashboard']">
+                        <mat-icon class="sidenav-icon">emoji_objects</mat-icon>
+                        <span style="padding-left: 0.8cm;">Notes</span>
                     </button>
-                    </li><br/>
-                    <li>
-                        <button mat-raised-button fxFlex=column fxLayout=column>
-                            <mat-icon>notifications</mat-icon>Reminders
-                    </button>
-                    </li><br/>
-                    <li>
-                        <button mat-raised-button fxFlex=column fxLayout=column>
-                            <mat-icon> local_offer</mat-icon>labels
-                    </button>
-                    </li><br/>
-                    <li>
-                        <button mat-raised-button fxFlex=column fxLayout=column>
-                            <mat-icon>edit</mat-icon>edit labels
-                    </button>
-                    </li><br/>
-                    <li>
-                        <button mat-raised-button fxFlex=column fxLayout=column>
-                            <mat-icon>archive</mat-icon>archive
-                    </button>
-                    </li><br/>
-                    <li>
-                        <button mat-raised-button fxFlex=column fxLayout=column>
-                            <mat-icon>delete</mat-icon>trash
-                    </button>
-                    </li><br/>
-                </ul>
-            </div>
-            <div class="SideBarText">
-                <span>Privacy . Term</span><br/>
-                <span>Open source licenses</span>
-            </div>
-        </mat-sidenav>
-        <router-outlet></router-outlet>
-        <app-note></app-note>
-        <div class="text">
-            <span>Notes add you appear here</span>
-        </div>
-    </mat-sidenav-container>
+                </div>
+                <div class="navbuttons">
+                    <button mat-button class="navbutton" (click)="onReminder()">
+                <mat-icon>notifications</mat-icon>
+                <span style="padding-left: 0.8cm;">Reminders</span>
+                </button>
+                </div>
+                <div class="navbuttons" *ngFor="let label of labels">
+                    <button mat-button class="navbutton">
+                <mat-icon style="padding-right: 0.7cm;">label</mat-icon>
+                {{ label.name }}
+                </button>
+                </div>
+                <div class="navbuttons">
+                    <button mat-button class="navbutton" (click)="openEditLabelDialog()">
+                <mat-icon>edit</mat-icon>
+                <span style="padding-left: 0.8cm;">Edit labels</span>
+                </button>
+                </div>
+                <div class="navbuttons">
+                    <button mat-button class="navbutton" (click)="onArchive()">
+                <mat-icon>archive</mat-icon>
+                <span style="padding-left: 0.8cm;">Archive</span>
+                </button>
+                </div>
+                <div class="navbuttons">
+                    <button mat-button class="navbutton" (click)="onTrash()">
+                <mat-icon>delete</mat-icon>
+                <span style="padding-left: 0.8cm;">Trash</span>
+                </button>
+                </div>
+                <div class="SideBarText">
+                    <span>Privacy . Term</span><br/>
+                    <span>Open source licenses</span>
+                </div>
+            </mat-sidenav>
+            <mat-sidenav-content class="sidenav-content">
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
 </div>
