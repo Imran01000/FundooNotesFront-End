@@ -1,11 +1,19 @@
 .mycontainer {
-    height: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: transparent;
 }
 
 img {
-    height: 1cm;
-    width: 1cm;
+    height: 0.8cm;
+    width: 0.8cm;
     padding: 0.2cm;
+}
+
+.tool-bar {
+    display: flex;
+    height: 100%;
 }
 
 .searchbar input {
@@ -14,42 +22,65 @@ img {
     height: 1cm;
     border-radius: 10px;
     margin-left: 2cm;
-}
-
-mat-toobar {
-    height: fit-content;
-}
-
-mat-sidenav-container {
-    height: 100%;
-}
-
-mat-sidenav,
-mat-sidenav-content {
-    padding: 16px;
-}
-
-mat-sidenav {
-    width: 8.2cm;
-    height: 100%;
+    outline: none;
+    border-color: bisque;
 }
 
 .icons {
     padding: 1cm;
 }
 
-.text {
-    margin-left: 17cm;
-    margin-top: 7cm;
-    font: icon
-}
-
-mat-raised-button :hover {
-    background-color: burlywood;
-}
-
 .SideBarText {
     margin-top: 4cm;
     margin-left: 1cm;
     font: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sidenav-content {
+    justify-content: center;
+    width: 100%;
+    align-content: center;
+    height: 100%;
+}
+
+.navbutton {
+    height: 1.5cm;
+    text-align: left;
+    width: 7.36cm;
+    border-radius: 0px 50px 50px 0px;
+}
+
+.navbuttons button:hover {
+    height: 1.5cm;
+    text-align: left;
+    width: 7.36cm;
+    border-color: azure;
+    border-radius: 0px 50px 50px 0px;
+    background-color: bisque;
+}
+
+.sidenav-div {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-color: whitesmoke;
+    margin: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.sidenav-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border-color: bisque;
+    overflow: hidden;
+}
+
+.matSidenav {
+    font-size: smaller;
+    font-family: monospace;
+    justify-content: space-around !important;
+    border: none;
 }
