@@ -1,35 +1,37 @@
 <div class="mycontainer">
-    <mat-toolbar>
-        <button mat-icon-button (click)="sidenav.toggle()">
+    <div>
+        <mat-toolbar>
+            <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon matTooltip="Main menu">menu</mat-icon>
         </button>
-        <img src="..//assets//sample4.jpg">
-        <span>Fundoo</span>
-        <span style="color: gold;">Note</span>
-        <div class="searchbar">
-            <input type="text" placeholder="Search" fxLayoutAlign="center center">
-        </div>
-        <div class="icons">
-            <button mat-icon-button>
+            <img src="..//assets//sample4.jpg">
+            <span>Fundoo</span>
+            <span style="color: gold;">Note</span>
+            <div class="searchbar">
+                <input type="text" placeholder="Search" fxLayoutAlign="center center">
+            </div>
+            <div class="icons">
+                <button mat-icon-button>
                 <mat-icon matTooltip="Refresh">refresh</mat-icon>
             </button>
-            <button mat-icon-button *ngIf="!view" matTooltip="List View" (click)="getView()">
+                <button mat-icon-button *ngIf="!view" matTooltip="List View" (click)="getView()">
                 <mat-icon matTooltip="List View">view_stream</mat-icon>
             </button>
-            <button mat-icon-button *ngIf="view" matTooltip="Grid View" (click)="getView()">
+                <button mat-icon-button *ngIf="view" matTooltip="Grid View" (click)="getView()">
                 <mat-icon>view_module</mat-icon>
             </button>
-            <button mat-icon-button>
+                <button mat-icon-button>
                 <mat-icon matTooltip="Settings">settings</mat-icon>
             </button>
-            <button mat-icon-button routerLink="/" matTooltip="Fundoo Account" class="account-button">
+                <button mat-icon-button (click)=" openDailog()" matTooltip="Fundoo Account" class="account-button">
                 <mat-icon>account_circle</mat-icon>
             </button>
-        </div>
-    </mat-toolbar>
+            </div>
+        </mat-toolbar>
+    </div>
     <div class="sidenav-div">
         <mat-sidenav-container class="sidenav-container">
-            <mat-sidenav class="matSidenav" mode="slide" #sidenav>
+            <mat-sidenav class="matSidenav" mode="side" #sidenav>
                 <div class="navbuttons">
                     <button mat-button class="navbutton" [routerLink]="['/dashboard']">
                         <mat-icon class="sidenav-icon">emoji_objects</mat-icon>
